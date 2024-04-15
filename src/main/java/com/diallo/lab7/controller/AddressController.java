@@ -1,8 +1,10 @@
 package com.diallo.lab7.controller;
 
 
+import com.diallo.lab7.dto.AddressDTO;
 import com.diallo.lab7.model.Address;
 import com.diallo.lab7.service.AddressService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +21,11 @@ public class AddressController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Address> save(@RequestBody Address address) {
-        Address address1 = addressService.save(address);
-        return ResponseEntity.ok(address1);
+    public ResponseEntity<AddressDTO> save(@RequestBody AddressDTO addressDTO) {
+        Address address = new Address();
+        BeanUtils.copyProperties(addressDTO, address);
+        addressService.save(address);
+        return ResponseEntity.ok(addressDTO);
     }
 
     /*

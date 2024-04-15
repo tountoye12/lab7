@@ -1,10 +1,12 @@
 package com.diallo.lab7.controller;
 
 
+import com.diallo.lab7.dto.PatientDTO;
 import com.diallo.lab7.exception.PatientNotFoundException;
 import com.diallo.lab7.model.Patient;
 import com.diallo.lab7.service.PatientService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,9 +41,9 @@ public class PatientController {
      */
 
     @PostMapping("/register")
-    public ResponseEntity<Patient> addPatient(@RequestBody Patient patient) {
-        patientService.savePatient(patient);
-        return ResponseEntity.ok(patient);
+    public ResponseEntity<PatientDTO> addPatient(@RequestBody PatientDTO patientDto) {
+        patientService.savePatient(patientDto);
+        return ResponseEntity.ok(patientDto);
     }
 
     /*
@@ -50,9 +52,9 @@ public class PatientController {
     implement appropriate exception handling, for where patientId is invalid and not found.
      */
     @GetMapping("/get/{id}")
-    public ResponseEntity<Patient> getPatientById(@PathVariable("id")  Integer id) throws PatientNotFoundException {
-        Patient patient = patientService.findPatientById(id);
-        return ResponseEntity.ok(patient);
+    public ResponseEntity<PatientDTO> getPatientById(@PathVariable("id")  Integer id) throws PatientNotFoundException {
+
+        return ResponseEntity.ok(patientService.findPatientById(id));
     }
 
     /*
@@ -64,15 +66,10 @@ public class PatientController {
     for where patientId is invalid and not found.
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<Patient> updatePatient(@PathVariable("id") Integer id,
-                                                 @RequestBody Patient patient) throws PatientNotFoundException {
-        Patient patient1 = patientService.findPatientById(id);
-        patient.setId(id);
-        patient1.setFirstName(patient.getFirstName());
-        patient1.setPatient_address(patient.getPatient_address());
-        patient1.setPatientNumber(patient.getPatientNumber());
-        patient1.setAppointments(patient.getAppointments());
-        return ResponseEntity.ok(patient1);
+    public ResponseEntity<PatientDTO> updatePatient(@PathVariable("id") Integer id,
+                                                 @RequestBody PatientDTO patientDTO ) throws PatientNotFoundException {
+        patientService.updatePatient(id, patientDTO);
+        return ResponseEntity.ok(patientDTO);
     }
 
     /*
@@ -82,13 +79,8 @@ public class PatientController {
      */
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Patient> deletePatient(@PathVariable("id") Integer id) throws PatientNotFoundException {
-        Patient patient = patientService.findPatientById(id);
-        System.out.println("###########################");
-        System.out.println(patient);
-        System.out.println("###########################");
-        Patient patient1 = patientService.deletePatient(patient);
-        return ResponseEntity.ok(patient1);
+    public void deletePatient(@PathVariable("id") Integer id) throws PatientNotFoundException {
+        patientService.deletePatient(id);
     }
 
     /*

@@ -20,7 +20,7 @@ public class Patient {
     private Integer id;
     private String patientNumber;
     private String firstName;
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Address patient_address;
     @OneToMany()
     private List<Appointment> appointments;
