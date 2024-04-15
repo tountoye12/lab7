@@ -53,6 +53,26 @@ public class PatientController {
         return ResponseEntity.ok(patient);
     }
 
+    /*
+    4. HTTP PUT request: http://localhost:8080/adsweb/api/v1/patient/update/1
+    - Retrieves and updates Patient
+     data for the patient whose patientId is 1 (or any other
+     valid patientId). Also, make sure to
+    implement appropriate exception handling,
+    for where patientId is invalid and not found.
+     */
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Patient> updatePatient(@PathVariable("id") Integer id,
+                                                 @RequestBody Patient patient) throws PatientNotFoundException {
+        Patient patient1 = patientService.findPatientById(id);
+        patient.setId(id);
+        patient1.setFirstName(patient.getFirstName());
+        patient1.setPatient_address(patient.getPatient_address());
+        patient1.setPatientNumber(patient.getPatientNumber());
+        patient1.setAppointments(patient.getAppointments());
+        return ResponseEntity.ok(patient1);
+    }
+
 
 }
 

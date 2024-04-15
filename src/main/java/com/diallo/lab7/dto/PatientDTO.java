@@ -1,7 +1,7 @@
-package com.diallo.lab7.model;
+package com.diallo.lab7.dto;
 
-
-import jakarta.persistence.*;
+import com.diallo.lab7.model.Address;
+import com.diallo.lab7.model.Appointment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,17 +11,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "patient")
-public class Patient {
+public class PatientDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String patientNumber;
     private String firstName;
-    @OneToOne()
     private Address patient_address;
-    @OneToMany()
     private List<Appointment> appointments;
 }
