@@ -1,8 +1,8 @@
-package com.diallo.lab6.service;
+package com.diallo.lab7.service;
 
 
-import com.diallo.lab6.model.Surgery;
-import com.diallo.lab6.repository.SurgeryRepository;
+import com.diallo.lab7.model.Surgery;
+import com.diallo.lab7.repository.SurgeryRepository;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,7 +1,7 @@
-package com.diallo.lab6.service;
+package com.diallo.lab7.service;
 
-import com.diallo.lab6.model.Appointment;
-import com.diallo.lab6.repository.AppointmentRepository;
+import com.diallo.lab7.model.Appointment;
+import com.diallo.lab7.repository.AppointmentRepository;
 import org.springframework.stereotype.Service;
 
 @Service

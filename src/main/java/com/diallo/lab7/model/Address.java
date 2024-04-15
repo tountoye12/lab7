@@ -1,4 +1,4 @@
-package com.diallo.lab6.model;
+package com.diallo.lab7.model;
 
 
 import jakarta.persistence.*;
@@ -13,16 +13,17 @@ import lombok.NoArgsConstructor;
 @Table(name = "address")
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String street;
     private String city;
     private String state;
     private String zip;
 
-    @OneToOne()
+    @OneToOne(mappedBy = "patient_address", cascade = CascadeType.ALL)
     private Patient patient;
-    @OneToOne()
+    @OneToOne(mappedBy = "surgery_address", cascade = CascadeType.ALL)
     private Surgery surgery;
+
 
 }

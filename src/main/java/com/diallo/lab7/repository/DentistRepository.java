@@ -1,6 +1,6 @@
-package com.diallo.lab6.repository;
+package com.diallo.lab7.repository;
 
-import com.diallo.lab6.model.Dentist;
+import com.diallo.lab7.model.Dentist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

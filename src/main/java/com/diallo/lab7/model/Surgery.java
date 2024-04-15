@@ -1,4 +1,4 @@
-package com.diallo.lab6.model;
+package com.diallo.lab7.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,8 +19,8 @@ public class Surgery {
 //    private String title;
 //    private String description;
     private String surgeryNumber;
-    @OneToOne
-    private Address address;
+    @OneToOne()
+    private Address surgery_address;
     @OneToMany(mappedBy = "surgery")
     private List<Appointment> appointmentList;
 

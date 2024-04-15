@@ -1,4 +1,4 @@
-package com.diallo.lab6.model;
+package com.diallo.lab7.model;
 
 
 import jakarta.persistence.*;

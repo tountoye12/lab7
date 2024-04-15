@@ -1,4 +1,4 @@
-package com.diallo.lab6.model;
+package com.diallo.lab7.model;
 
 
 import jakarta.persistence.*;
@@ -23,8 +23,8 @@ public class Patient {
 //    private String lastName;
 //    private String email;
 //    private String phone;
-    @OneToOne(mappedBy = "patient")
-    private Address address;
+    @OneToOne()
+    private Address patient_address;
     @OneToMany()
     private List<Appointment> appointments;
 }

@@ -1,4 +1,4 @@
-package com.diallo.lab6;
+package com.diallo.lab7;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
