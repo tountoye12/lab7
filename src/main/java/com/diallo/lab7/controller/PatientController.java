@@ -98,9 +98,10 @@ public class PatientController {
      */
 
     @GetMapping("/search/{searchString}")
-    public ResponseEntity<List<Patient>> searchPatient(@PathVariable("searchString") String searchString) {
+    public ResponseEntity<List<Patient>> searchPatient(@PathVariable("searchString") String searchString) throws PatientNotFoundException {
         List<Patient> patientList = patientService.findByFirstName(searchString);
-        log.info("Empty "+ patientList.toString());
+        if (patientList.isEmpty())
+            throw new PatientNotFoundException("Patient with : " + searchString + " not found ");
         return ResponseEntity.ok(patientList);
     }
 

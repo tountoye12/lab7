@@ -13,13 +13,12 @@ import lombok.NoArgsConstructor;
 @Table(name = "address")
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String street;
     private String city;
     private String state;
     private String zip;
-
     @OneToOne(mappedBy = "patient_address", cascade = CascadeType.ALL)
     private Patient patient;
     @OneToOne(mappedBy = "surgery_address", cascade = CascadeType.ALL)

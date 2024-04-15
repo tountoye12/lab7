@@ -41,7 +41,7 @@ public class PatientService {
         return deletedPatient;
     }
 
-    public List<Patient> findByFirstName(String searchString) {
+    public List<Patient> findByFirstName(String searchString) throws PatientNotFoundException {
         System.out.println("searchString: " + searchString);
         return patientRepository.findPatientByFirstName(searchString);
     }
