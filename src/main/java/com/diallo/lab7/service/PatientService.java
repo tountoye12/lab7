@@ -34,4 +34,10 @@ public class PatientService {
         else
             return patient;
     }
+
+    public Patient deletePatient(Patient patient) {
+        Patient deletedPatient = patientRepository.findPatientById(patient.getId());
+        patientRepository.delete(patient);
+        return deletedPatient;
+    }
 }

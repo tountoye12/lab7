@@ -73,6 +73,22 @@ public class PatientController {
         return ResponseEntity.ok(patient1);
     }
 
+    /*
+    5. HTTP DELETE request: http://localhost:8080/adsweb/api/v1/patient/delete/1 -
+    Deletes the Patient data for the patient
+    whose patientId is 1 (or any other valid patientId).
+     */
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Patient> deletePatient(@PathVariable("id") Integer id) throws PatientNotFoundException {
+        Patient patient = patientService.findPatientById(id);
+        System.out.println("###########################");
+        System.out.println(patient);
+        System.out.println("###########################");
+        Patient patient1 = patientService.deletePatient(patient);
+        return ResponseEntity.ok(patient1);
+    }
+
 
 }
 
