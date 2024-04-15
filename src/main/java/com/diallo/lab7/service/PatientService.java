@@ -40,4 +40,9 @@ public class PatientService {
         patientRepository.delete(patient);
         return deletedPatient;
     }
+
+    public List<Patient> findByFirstName(String searchString) {
+        System.out.println("searchString: " + searchString);
+        return patientRepository.findPatientByFirstName(searchString);
+    }
 }

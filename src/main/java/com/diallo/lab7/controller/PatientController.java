@@ -4,6 +4,7 @@ package com.diallo.lab7.controller;
 import com.diallo.lab7.exception.PatientNotFoundException;
 import com.diallo.lab7.model.Patient;
 import com.diallo.lab7.service.PatientService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("adsweb/api/v1/patient")
+@Slf4j
 public class PatientController {
 
     private  PatientService patientService;
@@ -87,6 +89,19 @@ public class PatientController {
         System.out.println("###########################");
         Patient patient1 = patientService.deletePatient(patient);
         return ResponseEntity.ok(patient1);
+    }
+
+    /*
+    6. http://localhost:8080/adsweb/api/v1/patient/search/{searchString}
+    - Queries all the Patient data for the patient(s) whose
+        data matches the input searchString.
+     */
+
+    @GetMapping("/search/{searchString}")
+    public ResponseEntity<List<Patient>> searchPatient(@PathVariable("searchString") String searchString) {
+        List<Patient> patientList = patientService.findByFirstName(searchString);
+        log.info("Empty "+ patientList.toString());
+        return ResponseEntity.ok(patientList);
     }
 
 
